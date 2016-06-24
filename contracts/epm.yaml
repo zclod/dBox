@@ -1,0 +1,62 @@
+jobs:
+
+- name: address1
+  job:
+    set:
+      val: "9CE900C6ADF49E56E3DA1D5FAF99D04BA2C8AE49"
+
+- name: address2
+  job:
+    set:
+      val: "B8ED299251251867BAB64B0748D4DDFE4BEC1F72"
+
+- name: address3
+  job:
+    set:
+      val: "00DB2E1787AC62E7F3225D1F3C0142B939E05696" 
+
+- name: contractRegistry
+  job:
+    deploy:
+      contract: database.sol
+      wait: true
+
+- name: createContract
+  job:
+    call:
+      destination: $contractRegistry
+      data: newContract $address1 $address2 100 dummyaddress
+      wait: true
+
+- name: createContract1
+  job:
+    call:
+      destination: $contractRegistry
+      data: newContract $address1 $address3 1003 dummyfile2
+      wait: true
+
+- name: createContract2
+  job:
+    call:
+    destination: $contractRegistry
+      data: newContract $address1 $address3 1003 dummyfile3
+      wait: true
+
+- name: createContract3
+  job:
+    call:
+      destination: $contractRegistry
+      data: newContract $address3 $address2 1003 dummyfile4
+      wait: true
+
+- name: getContract
+  job:
+    query-contract:
+      destination: $contractRegistry
+      data: contracts 0
+
+# - name: contractList
+#   job:
+#     call:
+#       destination: $contractRegistry
+#       data: relatedContracts $address1
