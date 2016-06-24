@@ -21,7 +21,7 @@ jobs:
       contract: database.sol
       wait: true
 
-- name: createContract
+- name: createContract0
   job:
     call:
       destination: $contractRegistry
@@ -38,15 +38,15 @@ jobs:
 - name: createContract2
   job:
     call:
-    destination: $contractRegistry
-      data: newContract $address1 $address3 1003 dummyfile3
+      destination: $contractRegistry
+      data: newContract $address3 $address1 11003 dummy
       wait: true
 
 - name: createContract3
   job:
     call:
       destination: $contractRegistry
-      data: newContract $address3 $address2 1003 dummyfile4
+      data: newContract $address3 $address2 54 caccapupu
       wait: true
 
 - name: getContract
@@ -55,8 +55,8 @@ jobs:
       destination: $contractRegistry
       data: contracts 0
 
-# - name: contractList
+# - name: queryContractList
 #   job:
-#     call:
+#     query-contract:
 #       destination: $contractRegistry
-#       data: relatedContracts $address1
+#       data: contractRegistry $address3 0

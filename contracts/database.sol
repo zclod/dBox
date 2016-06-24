@@ -13,29 +13,22 @@ contract ContractDatabase{
     }
 
 
-    struct Account{
-        uint[] contractList;
-    }
+    uint numContracts = 0;
+    mapping(address => uint[]) contractIndex;
 
-    uint numContracts;
     mapping(uint => StorageContract) public contracts;
-    mapping(address => Account) contractRegistry;
 
 
-    function ContractDatabase(){
-    numContracts = 0;
-    }
-
-    function relatedContracts(address owner) returns (uint[]){
-        Account c = contractRegistry[owner];
-        return c.contractList;
+    function getContracts(address owner) returns (uint[] contractList){
+        uint[] list = contractIndex[owner];
+        return list;
     }
 
     function newContract(address owner, address farmer, uint expireDate, bytes32 ipfsAddress) returns (uint contractID){
         contractID = numContracts++;
         contracts[contractID] = StorageContract(owner, farmer, expireDate, ipfsAddress);
 
-        contractRegistry[owner].contractList.push(contractID);
-        contractRegistry[farmer].contractList.push(contractID);
+        contractIndex[owner].push(contractID);
+        contractIndex[farmer].push(contractID);
     }
 }
