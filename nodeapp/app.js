@@ -64,19 +64,19 @@ function getContractList(){
     // prompt.get(['address'], function (error, result){
     //     if(error) {throw error}
     storageContract.getContracts("9CE900C6ADF49E56E3DA1D5FAF99D04BA2C8AE49", function(error, result){
-            if(error) {throw error}
-            debugger;
-            prompt.message = String(result);
+        if(error) {throw error}
+        debugger;
+        console.log(result);
         });
     storageContract.getContracts("B8ED299251251867BAB64B0748D4DDFE4BEC1F72", function(error, result){
         if(error) {throw error}
         debugger;
-        prompt.message = String(result);
+        console.log(result);
     });
     storageContract.getContracts("00DB2E1787AC62E7F3225D1F3C0142B939E05696", function(error, result){
         if(error) {throw error}
         debugger;
-        prompt.message = String(result);
+        console.log(result)
     });
     // });
 }
