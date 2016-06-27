@@ -35,9 +35,12 @@ contractID -> contract
 
 ogni contratto e indicizzato in base ad un id numerico per essere facilmente recuperabile
 ****** contract registry
-address -> [contract]
+address -> [contractID]
 
 per ogni utente tiene traccia di tutti i contratti di storage stipulati
+=probabilmente viene unito al contract database=
+
+
 ****** farmer registry?
 address -> amount
 

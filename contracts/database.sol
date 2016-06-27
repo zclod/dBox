@@ -19,9 +19,8 @@ contract ContractDatabase{
     mapping(uint => StorageContract) public contracts;
 
 
-    function getContracts(address owner) returns (uint[] contractList){
-        uint[] list = contractIndex[owner];
-        return list;
+    function getContracts(address owner) constant returns (uint[] contractList){
+        return contractIndex[owner];
     }
 
     function newContract(address owner, address farmer, uint expireDate, bytes32 ipfsAddress) returns (uint contractID){
