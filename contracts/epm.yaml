@@ -26,6 +26,7 @@ jobs:
     call:
       destination: $contractRegistry
       data: newContract $address1 $address2 100 dummyaddress
+      amount: 1234567
       wait: true
 
 - name: createContract1

@@ -59,8 +59,8 @@ function setValue(value) {
 // getValue(changeValue);
 
 function getContractList(){
-    prompt.message = "query for an address";
-    prompt.start();
+    // prompt.message = "query for an address";
+    // prompt.start();
     // prompt.get(['address'], function (error, result){
     //     if(error) {throw error}
     storageContract.getContracts("9CE900C6ADF49E56E3DA1D5FAF99D04BA2C8AE49", function(error, result){
@@ -81,5 +81,30 @@ function getContractList(){
     // });
 }
 
-getContractList();
+// getContractList();
 
+var addr1 = "9CE900C6ADF49E56E3DA1D5FAF99D04BA2C8AE49";
+var addr2 = "B8ED299251251867BAB64B0748D4DDFE4BEC1F72";
+var addr3 = "00DB2E1787AC62E7F3225D1F3C0142B939E05696";
+
+function newContract(){
+    debugger;
+    storageContract.newContract.sendTransaction(addr1, addr2, 100, 0xaaab, {"value": 98765, "from": addr1}, function(error, result){
+        if(error){throw error}
+        debugger
+        console.log(result)
+    });
+}
+
+newContract();
+
+
+function getContract(){
+    storageContract.contracts(11, function(error, result){
+        if(error){throw error}
+        debugger
+        console.log(result)
+    });
+}
+
+// getContract();
